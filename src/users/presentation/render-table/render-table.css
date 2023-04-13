@@ -1,0 +1,23 @@
+table{
+    width: 90vw;
+    box-sizing: border-box;
+    background-color: rgba(70, 70, 70, .9);
+    border-collapse: collapse;
+}
+
+table thead{
+    background-color: rgba(0, 0, 0, 0.550);
+}
+
+table thead tr th{
+    width: 0px;
+    padding: 10px;
+}
+
+table tbody tr{
+    border-bottom: 3px solid ;
+}
+
+table tbody tr td{
+    padding: 10px;
+}
