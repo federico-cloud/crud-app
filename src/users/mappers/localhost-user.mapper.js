@@ -10,11 +10,11 @@ export const localHostUserToModel = (localHostUser) => {
     const { 
         avatar,
         balance,
-        firstName: first_name,
+        first_name,
         gender,
         id,
         isActive,
-        lastName: last_name,
+        last_name,
     } = localHostUser
 
     return new User({
