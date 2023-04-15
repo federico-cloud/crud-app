@@ -4,7 +4,7 @@ import { User } from "../models/user";
  * 
  * @param {Like<User>} userData 
  */
-const saveUser = async(userLike) => {
+export const saveUser = async(userLike) => {
     const user = new User(userLike);
 
     if (user.id) {
@@ -21,7 +21,7 @@ const saveUser = async(userLike) => {
  * 
  * @param {Like<User>} user 
  */
-const createUser = async(user) => {
+export const createUser = async(user) => {
 
     const url = `${import.meta.env.VITE_BASE_URL}/users`
     const response = await fetch(url,{
@@ -31,6 +31,7 @@ const createUser = async(user) => {
     })
 
     const newUser = await response.json();
+    console.log(newUser);
 
     return newUser;
 }

@@ -14,9 +14,10 @@ export const hideModal = () =>{
 }
 
 /**
- * @param {HTMLDivElement}
+ * @param {HTMLDivElement} element
+ * @param {(userLike) => Promise<void> } callback
  */
-export const renderModal = (element) => {
+export const renderModal = (element, saveUserCallback) => {
 
     if (modal) return;
 
@@ -32,7 +33,7 @@ export const renderModal = (element) => {
         }
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -45,11 +46,13 @@ export const renderModal = (element) => {
             }
 
             if(key === 'isActive'){
-                userData[key] = value === on ? true : false;
+                userData[key] = value === 'on' ? true : false;
             }
 
             userData[key] = value;
         }
+
+        await saveUserCallback(userData);
 
     })
 
