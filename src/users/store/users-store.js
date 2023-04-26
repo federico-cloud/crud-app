@@ -5,7 +5,6 @@ const state = {
     users: [],
 }
 
-//TODO
 const loadNextPage = async() => {
     const users = await loadUsersByPage(state.currentPage + 1);
     if (users.length === 0) return;
@@ -24,9 +23,26 @@ const loadPreviousPage = async() => {
     state.users = users;
 }
 
-//TODO:
-const onUserChanged = () => {
-    throw new Error('Not implemented');
+/**
+ * 
+ * @param {User} updatedUser
+ */
+const onUserChanged = (updatedUser) => {
+
+    let wasFound = false;
+
+    state.users = state.users.map( user =>{
+        if(user.id === updatedUser.id){
+            wasFound = true
+            return updatedUser;
+        }
+        return user;
+    });
+
+    if(state.users.length < 10 && !wasFound){
+        state.users.push(updatedUser);
+    }
+
 }
 
 //TODO:

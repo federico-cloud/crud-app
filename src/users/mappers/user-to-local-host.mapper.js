@@ -10,11 +10,11 @@ export const userModelToLocalHost = (user) => {
     const { 
         avatar,
         balance,
-        first_name,
+        firstName,
         gender,
         id,
         isActive,
-        last_name,
+        lastName,
     } = user
 
     return {
