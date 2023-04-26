@@ -1,3 +1,4 @@
+import { userModelToLocalHost } from "../mappers/user-to-local-host.mapper";
 import { User } from "../models/user";
 
 /**
@@ -5,14 +6,20 @@ import { User } from "../models/user";
  * @param {Like<User>} userData 
  */
 export const saveUser = async(userLike) => {
-    const user = new User(userLike);
 
+    
+    const user = new User(userLike);
+    if (!user.firstName || !user.lastName){
+
+    }
+
+    const userToSave = userModelToLocalHost(user);
     if (user.id) {
         throw 'Not implemented';
         return;
     }
 
-    const updateUser = await createUser(user);
+    const updateUser = await createUser(userToSave);
 
     return updateUser;
 }
